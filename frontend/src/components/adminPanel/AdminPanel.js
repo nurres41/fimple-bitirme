@@ -43,7 +43,7 @@ const AdminPanel = () => {
 },[auth,navigate]);
 
   return (
-    <div className="max-w-md mx-auto w-screen h-screen pt-10">
+    <div className="max-w-md mx-auto w-screen h-screen pt-10 md:px-5 px-10">
       <h2 className="text-2xl font-bold mb-6">Login Form</h2>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
         <Form>

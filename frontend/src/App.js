@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 import { ApplicationDataProvider } from "./context/ApplicationDataContext";
 import { AuthProvider } from "./context/AuthContext";
 import AdminApplicationList from "./components/adminPanel/AdminApplicationList";
-import AdminSingleApplication from "./components/adminPanel/AdminSingleApplication";
+import AdminSingleApplication from './components/adminPanel/AdminSingleApplication';
 
 function App() {
 
@@ -18,31 +18,33 @@ function App() {
       <ApplicationDataProvider>
         <div className="bg-gray-200">
           <Navbar />
-          <Routes>
-            <Route
-              path="/"
-              element={<Navigate to="/basvuru-olustur" replace />}
-            />
-            <Route path="/basvuru-olustur" element={<CreateApplication />} />
-            <Route path="/basvuru-basarili" element={<SuccessApplication />} />
-            <Route path="/basvuru-sorgula" element={<QueryApplication />} />
-            <Route
-              path="/basvuru-sorgula/:applicationNumber"
-              element={<ResultApplication />}
-            />
-            <Route
-              path="/admin"
-              element={<AdminPanel />}
-            />
-            <Route
-              path="/admin/basvuru-listesi"
-              element={<AdminApplicationList />}
-            />
-            <Route
-              path="/admin/basvuru/:singleApplication"
-              element={<AdminSingleApplication />}
-            />
-          </Routes>
+          <div className="md:ms-[240px]">
+            <Routes>
+              <Route
+                path="/"
+                element={<Navigate to="/basvuru-olustur" replace />}
+              />
+              <Route path="/basvuru-olustur" element={<CreateApplication />} />
+              <Route path="/basvuru-basarili" element={<SuccessApplication />} />
+              <Route path="/basvuru-sorgula" element={<QueryApplication />} />
+              <Route
+                path="/basvuru-sorgula/:applicationNumber"
+                element={<ResultApplication />}
+              />
+              <Route
+                path="/admin"
+                element={<AdminPanel />}
+              />
+              <Route
+                path="/admin/basvuru-listesi"
+                element={<AdminApplicationList />}
+              />
+              <Route
+                path="/admin/basvuru/:singleApplication"
+                element={<AdminSingleApplication />}
+              />
+            </Routes>
+          </div>
         </div>
       </ApplicationDataProvider>
     </AuthProvider>
