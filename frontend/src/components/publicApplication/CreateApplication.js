@@ -3,6 +3,8 @@
 import React from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   name: Yup.string().required('Lütfen isminizi doğru bir şekilde giriniz!'),
@@ -11,6 +13,8 @@ const validationSchema = Yup.object({
   idNo: Yup.number().required().positive().integer().min(11, 'Lütfen TC kimlik numaranızı giriniz!'),
   request: Yup.string().required('Lütfen yardımcı olmamızı istediğiniz konuyu açıklayınız!'),
   address: Yup.string().required('Adresinizi giriniz!'),
+  status: Yup.boolean(),
+  note: Yup.string(),
 });
 
 const initialValues = {
@@ -20,11 +24,21 @@ const initialValues = {
   idNo: '',
   request: '',
   address: '',
+  status: false,
+  note: '',
 };
 
 const CreateApplication = () => {
-  const eventSubmit = (values) => {
-    console.log('Data Kontrol: ', values);
+
+  const navigate = useNavigate();
+
+  const eventSubmit = async (values) => {
+    try {
+      await axios.post('http://localhost:3001/basvuru-olustur', values);
+      navigate('/basvuru-basarili');
+    }catch(err){
+      console.error('Axios hatasi: ',err);
+    }
   };
 
   return (
