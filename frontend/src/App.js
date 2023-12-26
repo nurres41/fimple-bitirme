@@ -18,7 +18,7 @@ function App() {
       <ApplicationDataProvider>
         <div className="bg-gray-200">
           <Navbar />
-          <div className="md:ms-[240px]">
+          <div>
             <Routes>
               <Route
                 path="/"

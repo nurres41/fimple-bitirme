@@ -24,7 +24,7 @@ const AdminSingleApplication = () => {
   const handleSubmit = async (values) => {
     try {
        const res = await axios.put(`http://localhost:3001/admin/basvuru/${singleApplication}`, values);
-        // navigate('/basvuru-sorgula');
+        navigate('/basvuru-sorgula');
         console.log(res.data)
     } catch (error) {
         console.error('Single Application Error: ', error);
